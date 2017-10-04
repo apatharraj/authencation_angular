@@ -1,0 +1,24 @@
+<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 text-center login-container">
+    <h4 class="text-center">Register</h4>
+    <form role="form" (ngSubmit)="register(f)" #f=ngForm>
+        <div class="form-group">
+            <input type="email" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="user.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" required>
+            <label class="text-danger" [hidden]="email.valid || (email.pristine && ! f.submitted)">Must Enter Email</label>
+            <label class="text-danger" [hidden]="!email.hasError('pattern')">Enter Valid EMail</label>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="Username" name="username" #username="ngModel" [(ngModel)]="user.username" class="form-control" required>
+            <label class="text-danger" [hidden]="username.valid || (username.pristine && ! f.submitted)">Must Enter Username</label>
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password" #password="ngModel" name="password" [(ngModel)]="user.password" minlength="6" class="form-control" required>
+            <label class="text-danger" [hidden]="password.valid || (password.pristine && !f.submitted)">Must Enter Password</label>
+            <label class="text-danger" [hidden]="(!password.hasError('minlength') && password.pristine)">Password minlength 6</label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Register</button>
+        </div>
+    </form>
+    <p>Already have an Account
+        <a href="javascript:void(0)" routerLink='/auth/login'> Login</a> here.</p>
+</div>

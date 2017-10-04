@@ -1,0 +1,7 @@
+<p>
+    {{userProfile | json}}
+
+    <input id="file" type="file" (change)="fileChanged($event)">
+    <img id="image" src="" alt="">
+    <button type="button" (click)="saveProfile()">Save Profile</button>
+</p>

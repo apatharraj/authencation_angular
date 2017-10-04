@@ -1,0 +1,20 @@
+<div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 text-center login-container">
+    <h4 class="text-center">LOGIN</h4>
+    <form role="form" (ngSubmit)="login(f)" #f=ngForm>
+        <div class="form-group">
+            <input type="text" placeholder="Username" name="username" #username="ngModel" [(ngModel)]="user.username" class="form-control" required>
+            <label class="text-danger" [hidden]="username.valid || (username.pristine && ! f.submitted)">Must Enter Username</label>
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" minlength="6" required>
+            <label class="text-danger" [hidden]="password.valid || (password.pristine && ! f.submitted)">Must Enter Password</label>
+            <label class="text-danger" [hidden]="!password.hasError('minlength')">Password length Minimum 6 Characters</label>
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
+    <p>Don't have an Account
+        <a href="javascript:void(0)" routerLink='/auth/register'> Register</a> here.</p>
+</div>
